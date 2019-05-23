@@ -27,12 +27,12 @@ type config struct {
 }
 
 func main() {
-    cfg := config{}
+	cfg := config{}
 	// Populate config struct (pass a pointer)
 	if err := envar.Fill(&cfg); err != nil {
 		panic(err)
 	}
-    // Print a formatted quote
+	// Print a formatted quote
 	fmt.Printf("\"Get busy %s or get busy %s.\" – Stephen King\n", cfg.Thing1, cfg.Thing2)
 }
 ```
@@ -52,3 +52,7 @@ Result:
 - each field must be of type `string`
 - each field is considered required (you can set empty default value)
 - error is returned when `Fill()` fails to fill a field
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
