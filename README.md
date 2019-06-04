@@ -57,6 +57,8 @@ You can visit [this gist](https://gist.github.com/fabritsius/8d7e53a90c01f8c3ddd
 - each field is considered required (you can set empty default value)
 - error is returned when `Fill()` fails to fill a field
 
+Examples of use can be found in [envar_test.go](./envar_test.go) file or on the [GoDoc page](https://godoc.org/github.com/fabritsius/envar).
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
