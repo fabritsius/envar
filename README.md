@@ -1,5 +1,7 @@
 # envar
 
+[![GoDoc](https://godoc.org/github.com/fabritsius/envar?status.svg)](https://godoc.org/github.com/fabritsius/envar)
+
 This module simplifies use of environment variables in Go programs. The package was inspired by [caarlos0/env](https://github.com/caarlos0/env) and serves a similar purpose.
 
 When working on a small project I decided not to hardcode my sensitive information and to use environment variables instead. The `env` module does exactly what I wanted but it is actually pretty big for what it's doing. Adding additonal 358 lines of code just to read couple variables in a more convenient way seemed wrong.
