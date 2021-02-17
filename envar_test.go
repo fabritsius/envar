@@ -35,8 +35,8 @@ func createCoupleEnvs() {
 func TestDataTypeErrors(t *testing.T) {
 	type config struct {
 		Name string `default:"Rey"`
-		Age  int    `default:"29"`
-		Job  string `default:"peacemaking"`
+		Age  uint   `default:"29"`
+		Job  int    `default:"peacemaking"`
 	}
 
 	cfg := config{}
@@ -58,6 +58,58 @@ func TestDefaults(t *testing.T) {
 
 	if cfg.Item != "Face" || cfg.Error != "Can't feel" {
 		t.Error("defaults have incorrect values")
+	}
+}
+
+func TestInts(t *testing.T) {
+	type config struct {
+		Port  int   `default:"3000"`
+		Zero  int   `default:"0"`
+		Three int8  `default:"3"`
+		Four  int16 `default:"4"`
+		Five  int32 `default:"5"`
+		Six   int64 `default:"6"`
+	}
+
+	cfg := config{}
+	if err := envar.Fill(&cfg); err != nil {
+		t.Error("int values aren't set properly:", err)
+	}
+
+	if cfg.Port != 3000 || cfg.Zero != 0 {
+		t.Error("int values have incorrect values")
+	}
+
+	type badConfig struct {
+		Name int `default:"Benedict"`
+	}
+	badcfg := badConfig{}
+	if err := envar.Fill(&badcfg); err == nil {
+		t.Error("non-int values are parsed as int")
+	}
+}
+
+func TestBools(t *testing.T) {
+	type config struct {
+		Allow bool `default:"true"`
+		Hero  bool `default:"false"`
+	}
+
+	cfg := config{}
+	if err := envar.Fill(&cfg); err != nil {
+		t.Error("int values aren't set properly")
+	}
+
+	if cfg.Allow != true || cfg.Hero != false {
+		t.Error("bool values have incorrect values")
+	}
+
+	type badConfig struct {
+		Number bool `default:"6"`
+	}
+	badcfg := badConfig{}
+	if err := envar.Fill(&badcfg); err == nil {
+		t.Error("non-bool values are parsed as bool")
 	}
 }
 

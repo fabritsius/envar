@@ -2,11 +2,9 @@
 
 [![GoDoc](https://godoc.org/github.com/fabritsius/envar?status.svg)](https://godoc.org/github.com/fabritsius/envar)
 
-This module simplifies use of environment variables in Go programs. The package was inspired by [caarlos0/env](https://github.com/caarlos0/env) and serves a similar purpose.
+This module simplifies use of environment variables in Go programs. The package was inspired by [caarlos0/env](https://github.com/caarlos0/env) and serves a similar purpose. This module is a lot smaller but also doesn't cover every use case.
 
-When working on a small project I decided not to hardcode my sensitive information and to use environment variables instead. The `env` module does exactly what I wanted but it is actually pretty big for what it's doing. Adding additonal 358 lines of code just to read couple variables in a more convenient way seemed wrong.
-
-Module `envar` works only with `strings` but it also only has 36 lines of code. I've never actually needed to export anything other than `strings` so this trade seems fair for my usecases (and maybe for yours as well).
+The `envar` module supports only types `string`, all kinds of `int` type and also `bool`. I've never actually needed to export anything other than these so I decided to make a tiny module for my simple needs.
 
 ## Example
 
